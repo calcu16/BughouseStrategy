@@ -1,7 +1,83 @@
 #inside "html5.html"
+#include "/conf/def.conf"
 <head>
-  <title>Contest Stats</title>
+  <title>%(PROJECT_NAME)s</title>
+  <link rel="shortcut icon" href="img/chess.ico">
+  <link rel="stylesheet" href="css/chess.css">
+  <script src="js/chess.js"></script>
 </head>
 <body>
-  Coming Soon...
+  <div class="content">
+    #include "board.html"
+    <div>
+      <input type=button value="<<" onclick="begin()" />
+      <input type=button value="<" onclick="prev()" />
+      <input type=button value=">" onclick="next()" />
+      <input type=button value=">>" onclick="end()" />
+    </div>
+
+    <div>
+      <h1><a href="#" onClick="set_line('WNg1-f3 BPd7-d5 WNf3-g5 BPh7-h6 WNg5-f7P BKe8-f7N WN-e5 BKf7-e8 WP-f7');">Miller Attack</a></h1>
+      <p>
+        The square in the bughouse opening is the f-pawn (for either white or black).
+        It is initially defended only by the king, meaning any capture of the f-pawn would need to be taken by the king leaving the king vulnerable.
+        Most people's first game of bughouse as black might go something like this.
+        White opens with the seemingly modern Nf3 to which black might respond d5.
+        White then plays an aggressive Ng5, and after black attempts to kick it with h7 white quickly sacs the knight with Nxf7.
+        Black at this point is pretty much forced to take back with Kxf7, White then goes into deep thought long enough for his partner to get a knight,
+         then plays Ne5. Black retreats with Ke8, then white's partner suddenly sacs his queen for a pawn and then white plays f7#.
+      </p>
+
+      <h2><a href="#" onClick="set_line('WNg1-f3 BPd7-d6 WNf3-g5 BNg8-h6 WPh2-h3 BPe7-e6 WPd2-d3 BBf8-e7 WNg5-f3 BNh6-g8');">Miller Attack - Carter's Defense</a></h2>
+      <p>
+        The basic knight-sac based opening starts off with Nf3. This knight is looking to go to either e5 or g5 to threaten f7.
+        Black responds with d6 to prevent g5 (d6 is better than Nc6 since White can drop a pawn on d6 to distract the knight).
+        White continues his plan and plays Ng5. Black plays Nh6 to protect the f7 square.
+        White then plays a defensive move h6 to prevent black from counterattacking with Ng4.
+        Black attempts to force the knight back with e6
+           (this is often better than e5 since Bc4 from white at some point will put a lot of pressure on that diagonal, however sometimes e5 is preferrable to get advanced pawns)
+        which White can defend by playing d3 opening up the bishop line.
+        If black persists with Be7 then white should retreat the knight with Nf3, this opens up white's bishop on the knight, so the black knight should also retreat.
+        I should note, that relatively speaking this final position is ok for black, for the most part in bughouse black is condemned to playing defense and a cramped position is many ways preferable.
+        In fact the forcing of h3 is a weakness in white's position as a black pawn dropped on g3 is very hard to deal with.
+      </p>
+
+      <h2><a href="#" onClick="set_line('WNg1-f3 BPd7-d6 WNf3-g5 BPh7-h6 WNg5-f7P BKe8-f7N WPe2-e4 BKf7-e8 WQd1-h5 BP-f7 WBf1-c4 BPe7-e6 WP-g6 BPf7-g6P WQh5-g6P BP-f7');">Miller Attack - Miller Variation</a></h2>
+      <p>
+        An alternative is to accept the knight and to play quickly in order to plug the hole. This has the advantage of putting black's team up a knight early on, but can put black into a very uncomfortable position.
+        Starting of again 1. Nf3 d6 2. Ng5, black now encourages white to go for the sac with 2. ... h6. White is fairly committed and must make the sac even if he is behind on time as retreating would put him on the defensive, leading to 3. Nxf7 Kxf7. If white can't wait for material he must generate an attack on his own focused on the white squared weaknesses. For instance (other options are available)
+        4. e4 Ke8 5. Qh5+, at this point black waits for material to plug the hole with (preferably bishops or pawns) say 5 ... f7. After 6. Bc4 e6 7. g6 (if say Black got the pawn from a pawn trade) xg6 8. Qxg6 and black stalls for another pawn to put back on f7. While this opening does put black's team up a knight, it requires a decent time advantage in the early game and for black's partner to avoid generating material. If white can afford to wait for even a few pawns, Black's position looks 
+        <a href="#" onClick="set_line('WNg1-f3 BPd7-d6 WNf3-g5 BPh7-h6 WNg5-f7P BKe8-f7N WP-g6 BKf7-e8 WP-f7 BKe8-d7'); end();">much</a>
+        <a href="#" onClick="set_line('WNg1-f3 BPd7-d6 WNf3-g5 BPh7-h6 WNg5-f7P BKe8-f7N WP-g6 BKf7-g6P WP-h5 BKg6-h5P'); end();">worse</a>.
+      </p>
+
+      <h1><a href="#" onClick="set_line('WPe2-e4 BNg8-f6 WPe4-e5 BNb8-c6 WPe5-f6N BPe7-f6P');">King's Pawn Opening</a></h1>
+      <p>
+        Alternatively White can play a more strategic game rather than going for the quick tactical win.
+        Black's best option here might actually just be to sacrifice a knight early to defuse an attack from white.
+        For instance after 1. e4 Nf6 2. e5 Nc6 3. xf6 exf6 black is fairly comfortable (although down a knight).
+      </p>
+      <h2><a href="#" onClick="set_line('WPe2-e4 BPe7-e6 WPd2-d4 BPd7-d6 WPd4-d5 BPe6-d5P WPe4-d5P BPc7-c6 WP-e6 BQd8-e7 WQd1-e2');">Fortress Defense - Exchange Variation</a></h2>
+      <p>
+        If instead Black attempts to hold it together, then white can gain a lot of space with his pawns and pawns traded from the other board.
+        For instance if black builds a fortress (similar to how the battle lines looked in Carter's defense of the Miller attack then any pawns for white suddenly become very good.
+        After 1. e4 e6 2. d4 d6 3. d5 ..., black is faced with no good options (but then again he is playing black).
+        If he takes with 3. ... xd5 4. xd5 ... black again is cramped, attempting to kick the pawn with 4. ... cd6 leads to trouble in the advent of reinforcements after
+        5. e6 Qe7 6. Qe2. Even with a pawn or piece in hand black will have trouble defending both the f7 square and the d7 square.
+      </p>
+      <h2><a href="#" onClick="set_line('WPe2-e4 BPe7-e6 WPd2-d4 BPd7-d6 WPd4-d5 BNg8-e7 WPd5-e6P BBc8-e6P WP-d5 BBe6-d7 WP-e6');">Fortress Defense</a></h2>
+        If instead Black attempts to hold it together, then white can gain a lot of space with his pawns and pawns traded from the other board.
+        For instance if black builds a fortress (similar to how the battle lines looked in Carter's defense of the Miller attack then any pawns for white suddenly become very good.
+        After 1. e4 e6 2. d4 d6 3. d5 ..., black is faced with no good options (but then again he is playing black).
+
+        Moving the King's knight to the 5th rank will leave it pinned or captured by the bishop, so perhaps 3. .... Ne7 to put pressure on the d pawn. White simply takes and after
+        4. xe6 Bxe6 5. d5 Bd7 6. e6. Black is in a very uncomfortable position.
+        
+      <h2><a href="#" onClick="set_line('WPe2-e4 BPe7-e6 WPd2-d4 BPd7-d6 WPd4-d5 BPe6-d5P WPe4-d5P BPc7-c6 WP-e6 BQd8-e7 WQd1-e2');">Fortress Defense - Exchange Variation</a></h2>
+      <p>
+        If instead he takes with 3. ... xd5 4. xd5 ... black again is cramped, attempting to kick the pawn with 4. ... cd6 leads to trouble in the advent of reinforcements after
+        5. e6 Qe7 6. Qe2. Even with a pawn or piece in hand black will have trouble defending both the f7 square and the d7 square.
+      </p>
+    </div>
+  </div>
 </body>
